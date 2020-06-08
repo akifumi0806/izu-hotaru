@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IzuHotaru</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-expand navbar-dark fixed-top"><!-- 上部に固定 -->
+      <div class="container-fluid"><!-- バーの横幅を流動的に変動 -->
+          <h1 class="logofront">伊豆</h1><h1 class="logoback"><strong>ホタル</strong></h1>
+      <div id="sp-menu">
+      <ul>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">エリアから探す</a></li>
+        <li><a href="#">地図から探す</a></li>
+        <li><a href="#">見頃時期から探す</a></li>
+        <li><a href="#">穴場を投稿する</a></li>
+        <li><a href="#">穴場をみる</a></li>
+        <li><a href="#">注意事項</a></li>
+      </ul>
+    </div>
+ 
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
+ 
+</nav>
+      </div>
+    </header>
+          
+    <%= yield %>
+  </body>
+</html>

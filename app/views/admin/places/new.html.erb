@@ -1,0 +1,151 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-3 col-xs-6" style="text-align:center;">
+			<h3>新規登録</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<%= form_for @place,url:admin_places_path do |f| %>
+			<table class="col-xs-6">
+				<tbody>
+					<tr>
+						<td>写真</td>
+						<p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "400x300" %></p>
+						<td><%= f.attachment_field :image %></td>
+
+					</tr>
+					<tr>
+						<td>場所</td>
+						<td><%= f.text_field :placename %></td>
+					</tr>
+					<tr>
+						<td>説明文</td>
+						<td><%= f.text_area :explanation, size: "30x10" %></td>
+					</tr>
+					<tr>
+						<td>エリア</td>
+						<td><%= f.select :area, [["三島沼津", "三島沼津"],["中伊豆","中伊豆"],["西伊豆","西伊豆"],["東伊豆","東伊豆"],["南伊豆","南伊豆"]], include_blank: "選択して下さい" %>
+						</td>
+					</tr>
+					<tr>
+						<td>ホタルの種類</td>
+						<td><%= f.select :type, [["ゲンジホタル","ゲンジホタル"],["ヘイケホタル","ヘイケホタル"]], include_blank: "選択して下さい" %></td>
+					</tr>
+					<tr>
+						<td>見頃</td>
+						<td><%= f.select :admiration_startmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "" %>月</td>
+						<td><%= f.select :admiration_startseason,[["上","上"],["中","中"],["下","下"]], include_blank: "" %>旬</td>
+						<td>〜</td>
+						<td><%= f.select :admiration_finishmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "" %>月</td>
+						<td><%= f.select :admiration_finishseason,[["上","上"],["中","中"],["下","下"]], include_blank: "" %>旬</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class=col-xs-6">
+				<tbody>
+					<tr>
+						<td>住所</td>
+						<td><%= f.text_field :address %></td>
+					</tr>
+					<tr>
+						<td>電話番号</td>
+						<td><%= f.text_field :tel %></td>
+					</tr>
+					<tr>
+						<td>公式サイト</td>
+						<td><%= f.text_field :officialsite %></td>
+					</tr>
+					<tr>
+						<td>交通アクセス（車）</td>
+						<td><%= f.text_field :access_car %></td>
+					</tr>
+					<tr>
+						<td>交通アクセス（公共）</td>
+						<td><%= f.text_field :access_public %></td>
+					</tr>
+					<tr>
+						<td>駐車場</td>
+						<td><%= f.select :parking,[["有","有"],["無","無"]], include_blank: "" %></td>
+					</tr>
+					<tr>
+						<td>イベント</td>
+						<td><%= f.text_field :event %></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><%= f.select :event_startmonth, [*1..12] , include_blank: "" %>月</td>
+						<td><%= f.select :event_startday, [*1..31] , include_blank: "" %>日</td>
+						<td>〜</td>
+						<td><%= f.select :event_finishmonth, [*1..12] , include_blank: "" %>月</td>
+						<td><%= f.select :event_finishday, [*1..31] , include_blank: "" %>日</td>
+					</tr>
+					<tr>
+						<td>地図</td>
+						<td><input id="address" type="textbox" value="">
+						<input type="button" value="表示" onclick="codeAddress()"></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+
+	<div class="row">
+		<div id='map'></div>
+
+		<style>
+			#map {
+  				height: 400px;
+  				width: 1000px;
+			}
+		</style>
+
+		<script>
+			let map
+			let geocoder
+
+			function initMap(){
+  				geocoder = new google.maps.Geocoder()
+
+  				map = new google.maps.Map(document.getElementById('map'), {
+    			center: {lat: 34.976591, lng:138.946715},
+    			zoom: 10,
+  			});
+
+  				// marker = new google.maps.Marker({
+    		// 		position:  {lat: 34.976591, lng:138.946715},
+    		// 		map: map
+  				// });
+  			}
+
+  			function codeAddress() {
+   			 // 入力を取得
+    		let inputAddress = document.getElementById('address').value;
+
+  			geocoder.geocode({
+      			'address': inputAddress
+    		}, function (results, status) {
+      			if (status == 'OK') {
+       				 // map.setCenterで地図が移動
+       				map.setCenter(results[0].geometry.location);
+
+        			// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+        			// google.maps.Markerインスタンスを生成
+        			var marker = new google.maps.Marker({
+          				map: map,
+          				position: results[0].geometry.location
+       				 });
+      			} else {
+        			alert('Geocode was not successful for the following reason: ' + status);
+      			}
+    		});
+ 			 }
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjcpt_pYvR_ievhXi8HMnq74q4PzUTYx4&callback=initMap" async defer>
+			</script>
+	</div>
+	<div class="row">
+		<div class="col-xs-offset-3 col-xs-6">
+		<%= f.submit '新規作成', class: "btn btn-primary btn-lg btn-block", style: "color: white;"  %>
+		<% end %>
+</div>

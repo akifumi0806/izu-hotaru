@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  placename: MyString
+  explanation: MyText
+  aera: MyString
+  type: 
+  admiration_startmonth: 1
+  admiration_startseason: MyString
+  admiration_finishmonth: 1
+  admiration_finishseason: MyString
+  adress: MyString
+  tel: MyString
+  officialsite: MyString
+  parking: MyString
+  access_car: MyString
+  access_public: MyString
+  event: MyString
+  event_startmonth: 1
+  event_startday: 1
+  event_finishmonth: 1
+  event_finishday: 1
+  longitude: 1.5
+  latitube: 1.5
+
+two:
+  placename: MyString
+  explanation: MyText
+  aera: MyString
+  type: 
+  admiration_startmonth: 1
+  admiration_startseason: MyString
+  admiration_finishmonth: 1
+  admiration_finishseason: MyString
+  adress: MyString
+  tel: MyString
+  officialsite: MyString
+  parking: MyString
+  access_car: MyString
+  access_public: MyString
+  event: MyString
+  event_startmonth: 1
+  event_startday: 1
+  event_finishmonth: 1
+  event_finishday: 1
+  longitude: 1.5
+  latitube: 1.5
