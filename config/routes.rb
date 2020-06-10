@@ -25,7 +25,11 @@ devise_for :users, controllers: {
   	resources :users
   end
   namespace :user do
-  	resources :places
-  
+  	resources :places do
+      resources :favorites, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
+    end
   end
+  get 'user/users/withdraw' => 'user/users#withdraw'
+  get '/admin/top' => 'admin#top'
 end

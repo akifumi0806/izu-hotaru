@@ -24,6 +24,10 @@ body{
 	color: white;
 }
 
+input, option, textarea {
+  color: black;
+}
+
 h1.logofront{
 	font-family: 'Ma Shan Zheng', cursive;
 	float: left;
@@ -47,8 +51,16 @@ table td {
 .backgroundcolor{
 	background-color: rgba(220,220,220, 0.3);
     color: white;
+    height: 100%;
+    marfin-bottom: 50px;
+}
+
+.backgroundcolor1{
+  background-color: rgba(220,220,220, 0.3);
+    color: white;
     padding-top: 50px;
     height: 400px;
+    marfin-bottom: 50px;
 }
 
 .margin-left30{
@@ -78,9 +90,7 @@ table td {
 	text-align: center;
 }
 
-.main {
-  display: flex;
-}
+
 
  body {
      a:link {color:white; text-decoration:none }

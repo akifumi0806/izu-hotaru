@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row margin-top30" align="center">
+    <h3><strong><%= @place.placename %></strong></h3><br>
+  </div>
+  <div class="row backgroundcolor">
+    <div class="col-xs-6">
+      <p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "450x300" %></p>
+    </div>
+
+    <div class="col-xs-5" style="margin-left: 30px;">
+      <h4><%= @place.explanation %></h4><br>
+
+      <table>
+        <tbody>
+          <tr>
+            <td>エリア</td>
+            <td><%= @place.area %></td>
+          </tr>
+          <tr>
+            <td>ホタルの種類</td>
+            <td><%= @place.type %></td>
+          </tr>
+          <tr>
+            <td>見頃</td>
+            <td><%= @place.admiration_startmonth %>月<%= @place.admiration_startseason %>旬〜<%= @place.admiration_finishmonth %>月<%= @place.admiration_finishseason %>旬</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

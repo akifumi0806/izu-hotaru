@@ -2,7 +2,7 @@
   <div class="row margin-top30" align="center">
     <h3><strong><%= @place.placename %></strong></h3><br>
   </div>
-  <div class="row backgroundcolor">
+  <div class="row backgroundcolor1">
     <div class="col-xs-6">
       <p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "450x300" %></p>
     </div>
@@ -84,19 +84,20 @@
           geocoder = new google.maps.Geocoder()
 
           map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 34.976591, lng:138.946715},
+          center: {lat: <%= @place.latitude %>, lng:<%= @place.longitude %>},
           zoom: 10,
         });
 
-          // marker = new google.maps.Marker({
-        //    position:  {lat: 34.976591, lng:138.946715},
-        //    map: map
-          // });
+        marker = new google.maps.Marker({
+        position:  {lat:<%= @place.latitude %> , lng:<%= @place.longitude %>},
+        map: map
+         });
         }
 
         function codeAddress() {
          // 入力を取得
-        let inputAddress = document.getElementById('address').value;
+
+        
 
         geocoder.geocode({
             'address': inputAddress
@@ -122,6 +123,6 @@
   </div>
   <div class="row margin-top30" align="center">
     <%= link_to '編集する', edit_admin_place_path(@place), class: "btn btn-primary", style: "color: white;" %>
-    <%= link_to '削除する', admin_place_path(@place), method: :delete, class: "btn btn-danger", style: "color: white;" %>
+    <%= link_to '削除する', admin_place_path(@place), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger", style: "color: white;" %>
   </div>
 </div>

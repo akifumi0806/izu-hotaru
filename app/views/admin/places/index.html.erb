@@ -1,14 +1,15 @@
 <div class="container margin-top60 backgroundcolor">
-  <div class="row">
+  <div class="row" align="center">
   	<h3><strong>有名スポット一覧</strong></h3>
   </div>
 
   <div class="row main">
   		<% @places.each do |place| %>
-  		<div class="col-xs-3">
+        <%= link_to admin_place_path(place) do %>
+  		  <div class="col-xs-3">
   			<table>
   				<tr>
-  					<td><%= link_to place.placename, admin_place_path(place) %></td>
+  					<td><%= place.placename %></td>
   				</tr>
   				<tr>
 					<td><%= attachment_image_tag place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %></td>
@@ -17,7 +18,8 @@
   					<td>エリア　<%= place.area %></td>
   				</tr>
   			</table>
-  		</div>
+  		  </div>
+        <% end %>
   		<% end %>
 
 </div>

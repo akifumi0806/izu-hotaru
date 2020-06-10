@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-3 col-xs-6" style="text-align:center;">
+			<h3>穴場スポット投稿</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<%= p @place  %>
+		<%= form_for @place,url:user_places_path do |f| %>
+			<table class="col-xs-6">
+				<tbody>
+					<tr>
+						<td>写真</td>
+						<p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "400x300" %></p>
+						<td><%= f.attachment_field :image %></td>
+
+					</tr>
+					<tr>
+						<td>場所</td>
+						<td><%= f.text_field :placename %></td>
+					</tr>
+					<tr>
+						<td>説明文</td>
+						<td><%= f.text_area :explanation, size: "30x10" %></td>
+					</tr>
+					<tr>
+						<td>エリア</td>
+						<td><%= f.select :area, [["三島沼津", "三島沼津"],["中伊豆","中伊豆"],["西伊豆","西伊豆"],["東伊豆","東伊豆"],["南伊豆","南伊豆"]], include_blank: "選択して下さい" %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
+	</div>
+</div>	
