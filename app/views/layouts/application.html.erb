@@ -13,6 +13,20 @@
     <header class="navbar navbar-expand navbar-dark fixed-top"><!-- 上部に固定 -->
       <div class="container-fluid"><!-- バーの横幅を流動的に変動 -->
           <h1 class="logofront">伊豆</h1><h1 class="logoback"><strong>ホタル</strong></h1>
+            <% if user_signed_in? %>
+                  <div class="youkoso">
+                    ようこそ、<strong><%= current_user.name %></strong> さん！
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  </div>
+            <% end %>
+            <% if admin_signed_in? %>
+                  <div class="youkoso">
+                    ようこそ、<strong>管理者</strong> さん！
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  </div>
+            <% end %>
+      </div>
+
       <div id="sp-menu">
       <ul>
         <li><a href="#">ABOUT</a></li>
@@ -24,7 +38,7 @@
         <li><a href="#">注意事項</a></li>
       </ul>
     </div>
- 
+
     <div id="hm-icon">
       <a class="menu-trigger" href="#">
         <span></span>
@@ -33,9 +47,6 @@
       </a>
     </div>
 
- 
-</nav>
-      </div>
     </header>
           
     <%= yield %>

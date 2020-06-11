@@ -2,7 +2,7 @@
   <div class="row margin-top30" align="center">
     <h3><strong><%= @place.placename %></strong></h3><br>
   </div>
-  <div class="row backgroundcolor">
+  <div class="row backgroundcolor1">
     <div class="col-xs-6">
       <p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "450x300" %></p>
     </div>
@@ -16,16 +16,71 @@
             <td>エリア</td>
             <td><%= @place.area %></td>
           </tr>
-          <tr>
-            <td>ホタルの種類</td>
-            <td><%= @place.type %></td>
-          </tr>
-          <tr>
-            <td>見頃</td>
-            <td><%= @place.admiration_startmonth %>月<%= @place.admiration_startseason %>旬〜<%= @place.admiration_finishmonth %>月<%= @place.admiration_finishseason %>旬</td>
-          </tr>
+
         </tbody>
       </table>
     </div>
   </div>
+
+  <div class="row" align="center">
+    <h3>マップ</h3>
+    <div id='map'></div>
+
+    <style>
+      #map {
+          height: 400px;
+          width: 1000px;
+      }
+    </style>
+
+    <script>
+      let map
+      let geocoder
+
+      function initMap(){
+          geocoder = new google.maps.Geocoder()
+
+          map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @place.latitude %>, lng:<%= @place.longitude %>},
+          zoom: 10,
+        });
+
+        marker = new google.maps.Marker({
+        position:  {lat:<%= @place.latitude %> , lng:<%= @place.longitude %>},
+        map: map
+         });
+        }
+
+        function codeAddress() {
+         // 入力を取得
+
+        
+
+        geocoder.geocode({
+            'address': inputAddress
+        }, function (results, status) {
+            if (status == 'OK') {
+               // map.setCenterで地図が移動
+              map.setCenter(results[0].geometry.location);
+
+              // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+              // google.maps.Markerインスタンスを生成
+              var marker = new google.maps.Marker({
+                  map: map,
+                  position: results[0].geometry.location
+               });
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+       }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjcpt_pYvR_ievhXi8HMnq74q4PzUTYx4&callback=initMap" async defer>
+      </script>
+  </div>
+  <div class="row margin-top30" align="center">
+    <%= link_to '編集する', edit_user_place_path(@place), class: "btn btn-primary", style: "color: white;" %>
+    <%= link_to '削除する', user_place_path(@place), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger", style: "color: white;" %>
+  </div>
+
 </div>

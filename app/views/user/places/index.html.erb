@@ -1,0 +1,28 @@
+<div class="container margin-top60 backgroundcolor">
+  <div class="row" align="center">
+  	<h3><strong>穴場スポット一覧</strong></h3>
+    <div class="col-xs-2 col-xs-offset-10">
+      <a href="places/new" class="btn-circle-3d">＋</a>
+    </div>
+  </div>
+
+  <div class="row main">
+  		<% @places.each do |place| %>
+        <%= link_to user_place_path(place) do %>
+  		  <div class="col-xs-3">
+  			<table>
+  				<tr>
+  					<td><%= place.placename %></td>
+  				</tr>
+  				<tr>
+					<td><%= attachment_image_tag place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %></td>
+  				</tr>
+  				<tr>
+  					<td>エリア　<%= place.area %></td>
+  				</tr>
+  			</table>
+  		  </div>
+        <% end %>
+  		<% end %>
+
+</div>

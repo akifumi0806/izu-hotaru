@@ -7,7 +7,6 @@ class User::PlacesController < ApplicationController
 	end
 	def new
 		@place = Place.new
-		p @place
 	end
 	def create
 		@place = Place.new(place_params)
@@ -17,13 +16,19 @@ class User::PlacesController < ApplicationController
   	end
 	end
 	def edit
+		@place = Place.find(params[:id])
 	end
 	def update
+		@place = Place.find(params[:id])
+  		if @place.update(place_params)
+  		redirect_to user_place_path(@place)
+  	else render :edit
+  	end
 	end
 
 	private
 	def place_params
-  		params.require(:place).permit(:image, :placename, :explanation, :area, :type)
+  		params.require(:place).permit(:image, :placename, :explanation, :area, :type, :address, :longitude, :latitude)
   	end
 
 end

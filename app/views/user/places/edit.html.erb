@@ -1,0 +1,118 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-3 col-xs-6" style="text-align:center;">
+			<h3>穴場スポット編集</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<%= form_for @place,url:user_place_path do |f| %>
+			<table class="col-xs-6">
+				<tbody>
+					<tr>
+						<td>写真</td>
+						<td><%= f.attachment_field :image, style: 'color: white;' %></td>
+
+					</tr>
+					<tr>
+						<td>場所</td>
+						<td><%= f.text_field :placename %></td>
+					</tr>
+					<tr>
+						<td>説明文</td>
+						<td><%= f.text_area :explanation, size: "30x10" %></td>
+					</tr>
+					<tr>
+						<td>エリア</td>
+						<td><%= f.select :area, [["三島沼津", "三島沼津"],["中伊豆","中伊豆"],["西伊豆","西伊豆"],["東伊豆","東伊豆"],["南伊豆","南伊豆"]], include_blank: "選択して下さい" %>
+						</td>
+					</tr>
+					<tr>
+						<td>地図</td>
+						<td><%= f.text_field :address, style: "color: black", :onchange=>'onaddress()' %></td>
+					</tr>
+					<tr>
+						<td><%= f.hidden_field :longitude %>
+							<%= f.hidden_field :latitude %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+	</div>
+
+	<div class="row" align="center">
+    	<h3>マップ</h3>
+    </div>
+
+	<div class="row" align="center">
+		<div id='map'></div>
+
+		<style>
+			#map {
+  				height: 400px;
+  				width: 1000px;
+			}
+		</style>
+
+		<script>
+			let map
+			let geocoder
+
+			function initMap(){
+				geocoder = new google.maps.Geocoder()
+
+				map = new google.maps.Map(document.getElementById('map'), {
+					center: {lat: <%= @place.latitude %>, lng:<%= @place.longitude %>},
+					zoom: 10,
+				});
+
+				marker = new google.maps.Marker({
+					position:  {lat:<%= @place.latitude %> , lng:<%= @place.longitude %>},
+					map: map
+				});
+			}
+
+  			//function codeAddress() {
+  			//let inputAddress = document.getElementById('address').value;
+   			// 入力を取得
+   			function onaddress(){
+   				geocoder = new google.maps.Geocoder()
+    			let inputAddress = document.getElementById('place_address').value;
+	  			geocoder.geocode({
+	      			'address': inputAddress
+	    		}, function (results, status) {
+	      			if (status == 'OK') {
+	      				$('#map').empty();
+	       				// map.setCenterで地図が移動
+	       				map.setCenter(results[0].geometry.location);
+	       				console.log(results[0].geometry.location.lat());
+	       				console.log(results[0].geometry.location.lng());
+	       				document.getElementById('place_latitude').value=results[0].geometry.location.lat();
+	       				document.getElementById('place_longitude').value=results[0].geometry.location.lng();
+	        			// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+	        			// google.maps.Markerインスタンスを生成
+						map = new google.maps.Map(document.getElementById('map'), {
+							center: results[0].geometry.location,
+							zoom: 10,
+						});
+	        			var marker = new google.maps.Marker({
+	          				map: map,
+	          				position: results[0].geometry.location
+	       				});
+	      			} else {
+	        			alert('Geocode was not successful for the following reason: ' + status);
+	      			}
+	    		});
+ 			}
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjcpt_pYvR_ievhXi8HMnq74q4PzUTYx4&callback=initMap" async defer>
+			</script>
+	</div>
+	<div class="row">
+		<div class="col-xs-offset-3 col-xs-6">
+		<%= f.submit '編集を保存', class: "btn btn-primary btn-lg btn-block", style: "color: white;", data: {turbolinks: false} %>
+		</div>
+	</div>
+		<% end %>
+</div>	

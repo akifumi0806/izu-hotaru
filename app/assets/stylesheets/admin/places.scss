@@ -1,3 +1,44 @@
 // Place all the styles related to the admin/places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-circle-3d {
+  display: inline-block;
+  text-decoration: none;
+  background: #009966;
+  color: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  /*box-shadow: 1px 1px #bd6565;*/
+  /*border-bottom: solid 3px #bd6565;*/
+  transition: .4s;
+}
+.btn-circle-3d:link { 
+  color: white;
+  text-decoration: none;
+  }
+.btn-circle-3d:visited { 
+  color: white;
+  text-decoration: none;
+}
+.btn-circle-3d:hover {
+  color: white;
+  text-decoration: none;
+  }
+.btn-circle-3d:active {
+  color: white;
+  text-decoration: none;
+  }
+
+.btn-circle-3d {
+    transition: 1s;             /* 1秒かけて動く */
+}
+ 
+.btn-circle-3d:hover {
+    transform: rotate(360deg);  /* マウスオーバー時に回転 */
+}
