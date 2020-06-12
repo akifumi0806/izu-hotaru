@@ -22,14 +22,14 @@
             <% if admin_signed_in? %>
                   <div class="youkoso">
                     ようこそ、<strong>管理者</strong> さん！
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
                   </div>
             <% end %>
       </div>
 
       <div id="sp-menu">
-      <ul>
-        <li><a href="#">ABOUT</a></li>
+      <ul class="margin-top100">
+        <li><%= link_to "ABOUT", homes_about_path %></li>
         <li><a href="#">エリアから探す</a></li>
         <li><a href="#">地図から探す</a></li>
         <li><a href="#">見頃時期から探す</a></li>

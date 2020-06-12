@@ -31,5 +31,6 @@ devise_for :users, controllers: {
     end
   end
   get 'user/users/withdraw' => 'user/users#withdraw'
-  get '/admin/top' => 'admin#top'
+  get '/homes/top' => 'homes#top'
+  get '/homes/about' => 'homes#about'
 end
