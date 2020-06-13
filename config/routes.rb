@@ -16,13 +16,13 @@ devise_for :users, controllers: {
   	resources :places
   end
   namespace :admin do
-  	resources :users
+  	resources :users 
   end
 
   resources :places, only: [:index, :show]
 
   namespace :user do
-  	resources :users
+  	resources :users, only: [:show, :update, :destroy]
   end
   namespace :user do
   	resources :places do
