@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
-	# belongs_to :user
+	belongs_to :user
   #  belongs_to :admin
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy

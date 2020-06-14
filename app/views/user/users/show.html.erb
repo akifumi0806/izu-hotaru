@@ -10,6 +10,7 @@
 			<span class="info-logo">登録情報</span>
 			<%= link_to '編集する',edit_user_registration_path, class: "btn btn-primary", style: "color: white;"  %>
 			<%= link_to "パスワードを変更する", edit_user_password_path, class: "btn btn-primary" , style: "color: white;" %>
+			<%= link_to "退会する", user_user_path, method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" , style: "color: white;" %>
 		</div>
 	</div>
 	
@@ -27,6 +28,6 @@
 	</div>
 	<div class="row">
 		<span class="info-logo">穴場スポット投稿一覧</span>
-			
+		
 	</div>
 </div>
