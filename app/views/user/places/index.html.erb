@@ -20,6 +20,12 @@
   				<tr>
   					<td>エリア　<%= place.area %></td>
   				</tr>
+          <tr>
+            <td>By<%= place.user.name %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "#{place.comments.count} コメント", user_place_path(place.id) %></td>
+          </tr>
   			</table>
   		  </div>
         <% end %>
