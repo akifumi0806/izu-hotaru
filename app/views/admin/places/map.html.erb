@@ -1,0 +1,67 @@
+<div class="container margin-top60 backgroundcolor">
+
+  <div class="row" align="center">
+  	<h3><strong>有名スポットマップ</strong></h3>
+
+  	<div id='map'>
+  	
+
+  	</div>
+
+    <style>
+      #map {
+          height: 400px;
+          width: 1000px;
+      }
+    </style>
+
+    <script>
+      let map
+      let geocoder
+
+
+
+	      function initMap(){
+	          geocoder = new google.maps.Geocoder()
+
+	          map = new google.maps.Map(document.getElementById('map'), {
+	          center: {lat:34.976679, lng:138.946662},
+	          zoom: 10,
+	        });
+
+	      <% @places.each do |place| %>
+	        marker = new google.maps.Marker({
+	        position:  {lat:<%= place.latitude %> , lng:<%= place.longitude %>},
+	        map: map
+	         });
+	        
+	      <% end %>
+	      }
+	        function codeAddress() {
+	         // 入力を取得
+
+	        
+
+	        geocoder.geocode({
+	            'address': inputAddress
+	        }, function (results, status) {
+	            if (status == 'OK') {
+	               // map.setCenterで地図が移動
+	              map.setCenter(results[0].geometry.location);
+
+	              // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+	              // google.maps.Markerインスタンスを生成
+	              var marker = new google.maps.Marker({
+	                  map: map,
+	                  position: results[0].geometry.location
+	               });
+	            } else {
+	              alert('Geocode was not successful for the following reason: ' + status);
+	            }
+	        });
+	       }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjcpt_pYvR_ievhXi8HMnq74q4PzUTYx4&callback=initMap" async defer>
+      </script>
+  </div>
+ </div>

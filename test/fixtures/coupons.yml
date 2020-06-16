@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  place_id: 1
+  shopname: MyString
+  item: MyString
+  annotation: MyText
+  discount: 1
+  deadline: 1
+
+two:
+  user_id: 1
+  place_id: 1
+  shopname: MyString
+  item: MyString
+  annotation: MyText
+  discount: 1
+  deadline: 1

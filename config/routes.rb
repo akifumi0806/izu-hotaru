@@ -13,16 +13,16 @@ devise_for :users, controllers: {
   root to: 'admin/places#index'
 
   namespace :admin do
+    get '/places/map' => '/admin/places#map'
   	resources :places
-  end
-  namespace :admin do
-  	resources :users 
+  	resources :users
   end
 
   resources :places, only: [:index, :show]
 
   namespace :user do
   	resources :users, only: [:show, :update, :destroy]
+    resources :coupons, only: [:index]
   end
   namespace :user do
   	resources :places do
@@ -33,4 +33,6 @@ devise_for :users, controllers: {
   get 'user/users/withdraw' => 'user/users#withdraw'
   get '/homes/top' => 'homes#top'
   get '/homes/about' => 'homes#about'
+  
+  get '/user/places/map' => 'user/places#map'
 end
