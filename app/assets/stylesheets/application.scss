@@ -29,12 +29,17 @@ input, option, textarea,select {
 }
 
 .login {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   justify-content: space-between;
    background-color: rgba(220,220,220, 0.3);
    box-shadow: 0 0 8px gray;
    width: 400px;
    height: 400px;
    margin: auto;
    margin-top: 50px;
+
 
 }
 

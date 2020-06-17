@@ -1,7 +1,7 @@
 class Admin::PlacesController < ApplicationController
 
   def index
-  	@places = Place.all
+  	@places = Place.where(admin_id: true)
   end
   def new
   	@place = Place.new
@@ -13,6 +13,7 @@ class Admin::PlacesController < ApplicationController
 
   def create
   	@place = Place.new(place_params)
+    @place.admin_id = current_admin.id
   	if @place.save!
   		redirect_to admin_place_path(@place)
   	else render :new

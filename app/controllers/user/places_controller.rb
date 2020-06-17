@@ -2,7 +2,7 @@ class User::PlacesController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@places = Place.all
+		@places = Place.where(user_id: true)
 	end
 	def show
 		@place = Place.find(params[:id])
@@ -13,6 +13,7 @@ class User::PlacesController < ApplicationController
 	end
 	def create
 		@place = Place.new(place_params)
+		@place.user_id = current_user.id
   	if @place.save!
   		redirect_to user_place_path(@place)
   	else render :new
