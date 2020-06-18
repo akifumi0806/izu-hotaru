@@ -39,7 +39,7 @@ class Admin::PlacesController < ApplicationController
   end
 
   def map
-    @places = Place.all
+    @places = Place.where(admin_id: true)
   end
 
   private

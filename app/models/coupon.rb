@@ -1,4 +1,7 @@
 class Coupon < ApplicationRecord
+
+  belongs_to :place
+
 	  require 'barby'
 
 

@@ -16,7 +16,7 @@
           <h1 class="logofront">伊豆</h1><h1 class="logoback"><strong>ホタル</strong></h1>
             <% if user_signed_in? %>
                   <div class="youkoso">
-                    ようこそ、<strong><%= current_user.name %></strong> さん！
+                    ようこそ、<strong><%= link_to current_user.name, user_user_path(current_user) %></strong> さん！
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                   </div>
                 <% else %>

@@ -35,16 +35,34 @@
 	        map: map
 	         });
 
-	        infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
-	        	content: '<div class="map"><%= place.placename %></div>' // 吹き出しに表示する内容
-			});
+			  //       infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+			  //       	content: '<div class="map"><%= link_to place.placename, admin_place_path(place) %></div>' // 吹き出しに表示する内容
+					// });
 
+					var msg = '<div class="map"><%= link_to place.placename, admin_place_path(place) %><br>					<%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "200x150" %></div>'
+	        attachMessage(marker, msg)
 			marker.addListener('click', function() { // マーカーをクリックしたとき
 				infoWindow.open(map, marker); // mapみmakerをの吹き出しの表示します
 			});
 
 	      <% end %>
 	      }
+
+	      function attachMessage(marker, msg) { 
+	      	google.maps.event.addListener(marker, 'click', function() { showInfoWindow(this,msg); });
+
+	       } 
+
+	      var infowindow;
+	      function showInfoWindow(obj,msg){ /* 既に開かれていたら閉じる */ 
+
+	          if(infowindow) infowindow.close();          
+	          infowindow = new google.maps.InfoWindow({         
+				/*リックしたマーカーのタイトルと緯度・経度を情報ウィンドウに表示 */ 
+	          content: msg     }); 
+	          infowindow.open(map,obj); 
+	      } 
+	        
 	        function codeAddress() {
 	         // 入力を取得
 
