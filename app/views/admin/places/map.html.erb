@@ -18,7 +18,7 @@
     <script>
       let map
       let geocoder
-
+      var infoWindow;
 
 
 	      function initMap(){
@@ -34,7 +34,15 @@
 	        position:  {lat:<%= place.latitude %> , lng:<%= place.longitude %>},
 	        map: map
 	         });
-	        
+
+	        infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+	        	content: '<div class="map"><%= place.placename %></div>' // 吹き出しに表示する内容
+			});
+
+			marker.addListener('click', function() { // マーカーをクリックしたとき
+				infoWindow.open(map, marker); // mapみmakerをの吹き出しの表示します
+			});
+
 	      <% end %>
 	      }
 	        function codeAddress() {

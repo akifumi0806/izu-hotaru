@@ -2,7 +2,7 @@
   <div class="row" align="center">
   	<h3><strong>穴場スポット一覧</strong></h3>
     <div class="col-xs-2 col-xs-offset-10">
-      <a href="places/new" class="btn-circle-3d">＋</a>
+      <a href="new" class="btn-circle-3d">＋</a>
     </div>
   </div>
 
@@ -15,14 +15,22 @@
   					<td><%= place.placename %></td>
   				</tr>
   				<tr>
-					<td><%= attachment_image_tag place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %></td>
+					   <td><p><i class="fa fa-user "></i><%= place.user.name %></p><%= attachment_image_tag place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "200x150" %>
+             </td>
   				</tr>
+          <tr>
+            <td><i class="fa fa-comment"></i><%= place.comments.count %>
+            
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= place.favorites.count %>
+                
+            </td>
+          </tr>
+
   				<tr>
   					<td>エリア　<%= place.area %></td>
   				</tr>
-          <tr>
-            <td><%= link_to "#{place.comments.count} コメント", user_place_path(place.id) %></td>
-          </tr>
+          
   			</table>
   		  </div>
         <% end %>

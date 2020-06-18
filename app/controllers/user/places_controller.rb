@@ -7,6 +7,8 @@ class User::PlacesController < ApplicationController
 	def show
 		@place = Place.find(params[:id])
 		@comment = Comment.new
+		
+
 	end
 	def new
 		@place = Place.new
@@ -16,6 +18,7 @@ class User::PlacesController < ApplicationController
 		@place.user_id = current_user.id
   	if @place.save!
   		redirect_to user_place_path(@place)
+  		
   	else render :new
   	end
 	end
@@ -25,10 +28,15 @@ class User::PlacesController < ApplicationController
 	def update
 		@place = Place.find(params[:id])
   		if @place.update(place_params)
-  		redirect_to user_place_path(@place)
-  	else render :edit
-  	end
+  			redirect_to user_place_path(@place)
+	  	else render :edit
+	  	end
 	end
+	def destroy
+	    place = Place.find(params[:id])
+	    place.destroy
+	    redirect_to user_places_path
+  	end
 
 	private
 	def place_params

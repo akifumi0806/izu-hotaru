@@ -4,7 +4,7 @@
   </div>
   <div class="row backgroundcolor1">
     <div class="col-xs-6">
-      <p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "450x300" %></p>
+      <p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "450x300" %></p>
       <p>
         <i class="fa fa-comment"></i><a href="#comments"><%= @place.comments.count %></a>
 
@@ -14,9 +14,9 @@
             <%= @place.favorites.count %>
           <% end %>
 
-          <% else %>
+        <% else %>
             <%= link_to user_place_favorites_path(@place), method: :post do %>
-              <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <i class="far fa-heart" aria-hidden="true"></i>
               <%= @place.favorites.count %>
             <% end %>
         <% end %>
@@ -57,15 +57,16 @@
     </ol>
   </div>
 
-  <div class="row" align="center">
-    <%= form_for [@place, @comment], url: user_place_comments_path(@place.id) do |f| %>
+  <div class="row margin-top10" align="center">
+      <%= form_for [@place, @comment], url: user_place_comments_path(@place.id) do |f| %>
+  
+    
+          <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+  
   </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-        </div>
-    </div>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    
+  <div class="row margin-top10" align="center">
+    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20" %>
     <% end %>
   </div>
 
@@ -126,8 +127,10 @@
       </script>
   </div>
   <div class="row margin-top30" align="center">
-    <%= link_to '編集する', edit_user_place_path(@place), class: "btn btn-primary", style: "color: white;" %>
-    <%= link_to '削除する', user_place_path(@place), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger", style: "color: white;" %>
+    <% if @place.user.name == current_user %>
+      <%= link_to '編集する', edit_user_place_path(@place), class: "btn btn-primary", style: "color: white;" %>
+      <%= link_to '削除する', user_place_path(@place), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger", style: "color: white;" %>
+    <% end %>
   </div>
 
 </div>
