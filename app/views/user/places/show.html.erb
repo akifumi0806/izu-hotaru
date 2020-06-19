@@ -5,20 +5,14 @@
   <div class="row backgroundcolor1">
     <div class="col-xs-6">
       <p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "450x300" %></p>
-      <p>
+      <p class="comment">
         <i class="fa fa-comment"></i><a href="#comments"><%= @place.comments.count %></a>
 
-        <% if @place.favorited_by?(current_user) %>
-          <%= link_to user_place_favorite_path(@place), method: :delete do %>
-            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-            <%= @place.favorites.count %>
-          <% end %>
-
-        <% else %>
-            <%= link_to user_place_favorites_path(@place), method: :post do %>
-              <i class="far fa-heart" aria-hidden="true"></i>
-              <%= @place.favorites.count %>
-            <% end %>
+        <span id="favorites_buttons_<%= @place.id %>">
+          <%= render partial: 'user/favorites/favorite', locals: { place: @place} %>
+        </span>
+        <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=伊豆ホタル", title: 'Twitter', target: '_blank' do %>
+          <i class="fab fa-twitter skyblue" aria-hidden="true"></i>
         <% end %>
       </p>
     
@@ -49,7 +43,9 @@
             <span class="comment-date"><i class="far fa-clock"></i><%= comment.created_at.strftime('%Y/%m/%d') %></span><br>
             <span class="comment-entry"><%= comment.body %></span>
             <% if comment.user == current_user%>
-              <%= link_to "削除", user_place_comment_path(comment.place, comment), method: :delete, class: "btn btn-danger pull-right" %>
+              <%= link_to user_place_comment_path(comment.place, comment), method: :delete do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
             <% end %>
 
           </li>
