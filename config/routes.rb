@@ -22,12 +22,14 @@ devise_for :users, controllers: {
 
   namespace :user do
   	resources :users, only: [:show, :update, :destroy]
-    resources :coupons, only: [:index]
+    
   end
   namespace :user do
   	resources :places do
-      resources :favorites, only: [:create, :destroy]
+      resources :favorites, only: [:create]
+      delete 'favorites' => 'favorites#destroy'
       resources :comments, only: [:create, :destroy]
+      resources :coupons, only: [:index, :create, :show]
     end
   end
   get 'user/users/withdraw' => 'user/users#withdraw'

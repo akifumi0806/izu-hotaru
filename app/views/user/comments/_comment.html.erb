@@ -1,0 +1,15 @@
+<% place.comments.each do |comment| %>
+          <li>
+                      
+            <a href="#" class="link-author"><i class="fa fa-user"></i><%= comment.user.name %></a>
+            
+            <span class="comment-date"><i class="far fa-clock"></i><%= comment.created_at.strftime('%Y/%m/%d') %></span><br>
+            <span class="comment-entry"><%= comment.body %></span>
+            <% if comment.user == current_user%>
+              <%= link_to user_place_comment_path(comment.place, comment), method: :delete, remote: true do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+
+          </li>
+      <% end %>

@@ -34,30 +34,16 @@
   </div>
 
   <div class="row">
-    <ol>
-      <% @place.comments.each do |comment| %>
-          <li>
-                      
-            <a href="#" class="link-author"><i class="fa fa-user"></i><%= comment.user.name %></a>
-            
-            <span class="comment-date"><i class="far fa-clock"></i><%= comment.created_at.strftime('%Y/%m/%d') %></span><br>
-            <span class="comment-entry"><%= comment.body %></span>
-            <% if comment.user == current_user%>
-              <%= link_to user_place_comment_path(comment.place, comment), method: :delete do %>
-                <i class="far fa-trash-alt"></i>
-              <% end %>
-            <% end %>
-
-          </li>
-      <% end %>
+    <ol id="comment-body_<%= @place.id %>">
+      <%= render partial: 'user/comments/comment', locals: { comments: @comments, place: @place } %>
     </ol>
   </div>
 
   <div class="row margin-top10" align="center">
-      <%= form_for [@place, @comment], url: user_place_comments_path(@place.id) do |f| %>
+      <%= form_with model: [@place, @comment], url: user_place_comments_path(@place.id) do |f| %>
   
     
-          <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+          <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに", class: "form-control" %>
   
   </div>
     
