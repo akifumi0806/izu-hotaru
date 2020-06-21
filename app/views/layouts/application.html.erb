@@ -19,16 +19,18 @@
                     ようこそ、<strong><%= link_to current_user.name, user_user_path(current_user) %></strong> さん！
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                   </div>
-                <% else %>
-                  <div class="youkoso">
-                    <%= link_to "ログイン", new_user_session_path %>
-                  </div>
-            <% end %>
-            <% if admin_signed_in? %>
-                  <div class="youkoso">
-                    こんにちは、<strong>管理者</strong> さん！
-                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-                  </div>
+                
+              <% elsif admin_signed_in? %>
+                    <div class="youkoso">
+                      こんにちは、<strong>管理者</strong> さん！
+                      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                    </div>
+              
+              <% else %>
+                    <div class="youkoso">
+                      <%= link_to "ログイン", new_user_session_path %>
+                    </div>
+
             <% end %>
       </div>
 
@@ -38,8 +40,8 @@
         <li><a href="#">エリアから探す</a></li>
         <li><%= link_to "マップから探す", admin_places_map_path %></li>
         <li><a href="#">見頃時期から探す</a></li>
-        <li><a href="#">穴場を投稿する</a></li>
-        <li><a href="#">穴場をみる</a></li>
+        <li><%= link_to "穴場を投稿する", new_user_place_path %></li>
+        <li><%= link_to "穴場をみる", user_places_path %></li>
         <li><a href="#">注意事項</a></li>
       </ul>
     </div>

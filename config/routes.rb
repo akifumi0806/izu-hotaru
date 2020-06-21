@@ -37,4 +37,8 @@ devise_for :users, controllers: {
   get '/homes/about' => 'homes#about'
   
   get '/user/places/map' => 'user/places#map'
+
+  devise_scope :user do #簡単ログイン用
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
 end

@@ -109,7 +109,7 @@
       </script>
   </div>
   <div class="row margin-top30" align="center">
-    <% if @place.user.name == current_user %>
+    <% if @place.user.name == current_user.name %>
       <%= link_to '編集する', edit_user_place_path(@place), class: "btn btn-primary", style: "color: white;" %>
       <%= link_to '削除する', user_place_path(@place), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger", style: "color: white;" %>
     <% end %>

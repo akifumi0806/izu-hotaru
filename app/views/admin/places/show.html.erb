@@ -122,7 +122,9 @@
       </script>
   </div>
   <div class="row margin-top30" align="center">
-    <%= link_to '編集する', edit_admin_place_path(@place), class: "btn btn-primary", style: "color: white;" %>
-    <%= link_to '削除する', admin_place_path(@place), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger", style: "color: white;" %>
+    <% if admin_signed_in? %>
+      <%= link_to '編集する', edit_admin_place_path(@place), class: "btn btn-primary", style: "color: white;" %>
+      <%= link_to '削除する', admin_place_path(@place), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger", style: "color: white;" %>
+    <% end %>
   </div>
 </div>

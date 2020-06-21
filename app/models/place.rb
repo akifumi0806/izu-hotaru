@@ -15,5 +15,6 @@ class Place < ApplicationRecord
   # validates :longitude, presence: true
   validates :address, presence: true 
 
+
   self.inheritance_column = :_type_disabled #typeというカラムを使用しているためこの一行を追加することによりtypeのカラム名が有効になる
 end

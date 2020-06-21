@@ -82,3 +82,5 @@ end
 
  gem 'barby'
  gem 'chunky_png'
+
+ gem 'carrierwave', '~> 1.0.0'
