@@ -11,33 +11,35 @@
 				<tbody>
 					<tr>
 						<td>写真</td>
-						<td><%= f.attachment_field :image %></td>
+						<td class="white"><%= f.attachment_field :image, style:"color:white;" %></td>
 
 					</tr>
 					<tr>
 						<td>場所</td>
-						<td><%= f.text_field :placename, style: "color: black" %></td>
+						<td><%= f.text_field :placename %></td>
 					</tr>
 					<tr>
 						<td>説明文</td>
-						<td><%= f.text_area :explanation, size: "30x10", style: "color: black" %></td>
+						<td><%= f.text_area :explanation, size: "30x10" %></td>
 					</tr>
 					<tr>
 						<td>エリア</td>
-						<td><%= f.select :area, [["三島沼津", "三島沼津"],["中伊豆","中伊豆"],["西伊豆","西伊豆"],["東伊豆","東伊豆"],["南伊豆","南伊豆"]], include_blank: "選択して下さい", style: "color: black" %>
+						<td><%= f.select :area, [["三島沼津", "三島沼津"],["中伊豆","中伊豆"],["西伊豆","西伊豆"],["東伊豆","東伊豆"],["南伊豆","南伊豆"]], include_blank: "選択して下さい" %>
 						</td>
 					</tr>
 					<tr>
 						<td>ホタルの種類</td>
-						<td><%= f.select :type, [["ゲンジホタル","ゲンジホタル"],["ヘイケホタル","ヘイケホタル"]], include_blank: "選択して下さい", style: "color: black" %></td>
+						<td><%= f.select :type, [["ゲンジホタル","ゲンジホタル"],["ヘイケホタル","ヘイケホタル"]], include_blank: "選択して下さい" %></td>
 					</tr>
 					<tr>
 						<td>見頃</td>
-						<td><%= f.select :admiration_startmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "", style: "color: black" %>月</td>
-						<td><%= f.select :admiration_startseason,[["上","上"],["中","中"],["下","下"]], include_blank: "", style: "color: black" %>旬</td>
-						<td>〜</td>
-						<td><%= f.select :admiration_finishmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "", style: "color: black" %>月</td>
-						<td><%= f.select :admiration_finishseason,[["上","上"],["中","中"],["下","下"]], include_blank: "", style: "color: black" %>旬</td>
+						<td>
+							<%= f.select :admiration_startmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "" %>月
+							<%= f.select :admiration_startseason,[["上","上"],["中","中"],["下","下"]], include_blank: "" %>旬
+							〜
+							<%= f.select :admiration_finishmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "" %>月
+							<%= f.select :admiration_finishseason,[["上","上"],["中","中"],["下","下"]], include_blank: "" %>旬
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -46,39 +48,41 @@
 				<tbody>
 					<tr>
 						<td>住所</td>
-						<td><%= f.text_field :address, style: "color: black", :onchange=>'onaddress()' %></td>
+						<td><%= f.text_field :address, :onchange=>'onaddress()' %></td>
 					</tr>
 					<tr>
 						<td>電話番号</td>
-						<td><%= f.text_field :tel, style: "color: black" %></td>
+						<td><%= f.text_field :tel %></td>
 					</tr>
 					<tr>
 						<td>公式サイト</td>
-						<td><%= f.text_field :officialsite, style: "color: black" %></td>
+						<td><%= f.text_field :officialsite %></td>
 					</tr>
 					<tr>
 						<td>交通アクセス（車）</td>
-						<td><%= f.text_field :access_car, style: "color: black" %></td>
+						<td><%= f.text_field :access_car %></td>
 					</tr>
 					<tr>
 						<td>交通アクセス（公共）</td>
-						<td><%= f.text_field :access_public, style: "color: black" %></td>
+						<td><%= f.text_field :access_public %></td>
 					</tr>
 					<tr>
 						<td>駐車場</td>
-						<td><%= f.select :parking,[["有","有"],["無","無"]], include_blank: "", style: "color: black" %></td>
+						<td><%= f.select :parking,[["有","有"],["無","無"]], include_blank: "" %></td>
 					</tr>
 					<tr>
 						<td>イベント</td>
-						<td><%= f.text_field :event, style: "color: black" %></td>
+						<td><%= f.text_field :event %></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><%= f.select :event_startmonth, [*1..12] , include_blank: "", style: "color: black" %>月</td>
-						<td><%= f.select :event_startday, [*1..31] , include_blank: "", style: "color: black" %>日</td>
-						<td>〜</td>
-						<td><%= f.select :event_finishmonth, [*1..12] , include_blank: "", style: "color: black" %>月</td>
-						<td><%= f.select :event_finishday, [*1..31] , include_blank: "", style: "color: black" %>日</td>
+						<td>
+							<%= f.select :event_startmonth, [*1..12] , include_blank: "" %>月
+							<%= f.select :event_startday, [*1..31] , include_blank: "" %>日
+							〜
+							<%= f.select :event_finishmonth, [*1..12] , include_blank: "" %>月
+							<%= f.select :event_finishday, [*1..31] , include_blank: "" %>日
+						</tr>
 					</tr>
 					<tr>
 						<td><%= f.hidden_field :longitude %>

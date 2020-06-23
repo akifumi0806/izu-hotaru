@@ -18,14 +18,39 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Ma+Shan+Zheng&display=swap');
 
+html{
+  height: 100px;
+}
+
 body{
 	background: image-url('hotaru.jpg');
 	background-size: 100%;
 	color: white;
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+footer {
+  background-color: #009966;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.wrapper{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
 }
 
 input, option, textarea,select {
   color: black;
+}
+.white{
+  color: white;
 }
 
 .login {
@@ -39,8 +64,16 @@ input, option, textarea,select {
    height: 400px;
    margin: auto;
    margin-top: 50px;
+}
 
+.signup {
+  width: 170px;
+  margin: 0 auto;
+}
 
+.logincss {
+  width: 170px;
+  margin-top: 20px;
 }
 
 h1.logofront{
@@ -49,6 +82,7 @@ h1.logofront{
 }
 h1.logoback{
 	font-family: 'Hi Melody', cursive;
+  float: left;
 }
 
 .navbar{
@@ -68,19 +102,30 @@ table td {
   float: right;
 }
 
+
+.nav-menu {
+  margin-left: 30px;
+  border: 1px solid yellow;
+  border-radius: 4px;
+  padding: 10px;
+}
+
 .backgroundcolor{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 	background-color: rgba(220,220,220, 0.15);
-    color: white;
-    height: 100%;
-    marfin-bottom: 50px;
+  color: white;
+  height: 100%;
+  margin-bottom: 50px;
 }
 
 .backgroundcolor1{
   background-color: rgba(220,220,220, 0.15);
-    color: white;
-    padding-top: 50px;
-    height: 400px;
-    marfin-bottom: 50px;
+  color: white;
+  padding: 50px 0;
+  height: 400px;
+  margin-bottom: 50px;
 }
 
 .margin-left30{
@@ -108,6 +153,10 @@ table td {
   margin-bottom: 30px;
 }
 
+.padding-bottom30{
+  padding-bottom: 30px;
+}
+
 .padding-top30{
   padding-top: 30px;
 }
@@ -117,6 +166,10 @@ table td {
 
 .padding-right60{
 	padding-right: 60px;
+}
+
+.padding-left5{
+  padding-left: 5px;
 }
 
 .text-align-center{
@@ -150,8 +203,41 @@ p.comment{
 }
 
 .skyblue{
-  color: skyblue;
+  font-size: 18px;
+  background-color: #1da1f2;
   margin-left: 10px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.table > tbody > tr > th, .table > tbody > tr > td, {
+  vertical-align: middle;
+}
+
+.couponcenter{
+  text-align: center;
+}
+
+.super{
+  border: solid 5px;
+  width: 400px;
+  padding: 10px 30px;
+  margin-top: 50px;
+  font-size: x-large;
+}
+
+.underline{
+  border-bottom: solid 3px yellow;  
+}
+
+.discount{
+  color:#99FF00;
+  font-size: 100px;
+}
+
+.percent{
+  color:#99FF00;
+  font-size: 50px;
 }
 
 /*ハンバーガーメニュー*/
@@ -237,4 +323,6 @@ p.comment{
   text-decoration: none;
   font-weight: bold;
 }
+
+
 /*ハンバーガーメニューここまで*/

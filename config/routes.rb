@@ -14,6 +14,7 @@ devise_for :users, controllers: {
 
   namespace :admin do
     get '/places/map' => '/admin/places#map'
+    get '/places/searcharea' => '/admin/places#searcharea'
   	resources :places
   	resources :users
   end
@@ -25,6 +26,7 @@ devise_for :users, controllers: {
     
   end
   namespace :user do
+    get '/places/map' => '/user/places#map'
   	resources :places do
       resources :favorites, only: [:create]
       delete 'favorites' => 'favorites#destroy'
@@ -35,8 +37,7 @@ devise_for :users, controllers: {
   get 'user/users/withdraw' => 'user/users#withdraw'
   get '/homes/top' => 'homes#top'
   get '/homes/about' => 'homes#about'
-  
-  get '/user/places/map' => 'user/places#map'
+  get '/homes/attention' => 'homes#attention'
 
   devise_scope :user do #簡単ログイン用
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'

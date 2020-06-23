@@ -1,30 +1,31 @@
-<div class="container margin-top60 backgroundcolor">
+<div class="container margin-top60">
 
   <div class="row" align="center">
   	<h3><strong>有名スポット一覧</strong></h3>
     <div class="col-xs-2 col-xs-offset-10">
-      <a href="places/new" class="btn-circle-3d">＋</a>
+      <a href="/admin/places/new" class="btn-circle-3d">＋</a>
     </div>
   </div>
 
-  <div class="row main">
+  <div class="row main backgroundcolor">
   		<% @places.each do |place| %>
         <%= link_to admin_place_path(place) do %>
-  		  <div class="col-xs-3 index">
-  			<table>
-  				<tr>
-  					<td><h4><%= place.placename %></h4></td>
-  				</tr>
-  				<tr>
-					<td><%= attachment_image_tag place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "200x150" %></td>
-  				</tr>
-  				<tr>
-  					<td>エリア　<%= place.area %></td>
-  				</tr>
-  			</table>
+  		  <div class="col-xs-3 index padding-bottom30">
+    			<table>
+    				<tr>
+    					<td><h4><%= place.placename %></h4></td>
+    				</tr>
+    				<tr>
+  					<td><%= attachment_image_tag place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "250x200" %></td>
+    				</tr>
+    				<tr>
+    					<td>エリア　<%= place.area %></td>
+    				</tr>
+    			</table>
   		  </div>
         <% end %>
   		<% end %>
+  </div>
 
 </div>
 

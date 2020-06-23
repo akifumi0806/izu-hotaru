@@ -11,7 +11,7 @@
 				<tbody>
 					<tr>
 						<td>写真</td>
-						<td><%= f.attachment_field :image, style: 'color: white;' %></td>
+						<td class="white"><%= f.attachment_field :image %></td>
 						<td><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "100x50" %></td>
 					</tr>
 					<tr>
@@ -33,11 +33,13 @@
 					</tr>
 					<tr>
 						<td>見頃</td>
-						<td><%= f.select :admiration_startmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "" %>月</td>
-						<td><%= f.select :admiration_startseason,[["上","上"],["中","中"],["下","下"]], include_blank: "" %>旬</td>
-						<td>〜</td>
-						<td><%= f.select :admiration_finishmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "" %>月</td>
-						<td><%= f.select :admiration_finishseason,[["上","上"],["中","中"],["下","下"]], include_blank: "" %>旬</td>
+						<td>
+							<%= f.select :admiration_startmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "" %>月
+							<%= f.select :admiration_startseason,[["上","上"],["中","中"],["下","下"]], include_blank: "" %>旬
+							〜	
+							<%= f.select :admiration_finishmonth,[["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]], include_blank: "" %>月	
+							<%= f.select :admiration_finishseason,[["上","上"],["中","中"],["下","下"]], include_blank: "" %>旬
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -72,13 +74,15 @@
 						<td>イベント</td>
 						<td><%= f.text_field :event %></td>
 					</tr>
-					<tr>
+					<tr class="width50">
 						<td></td>
-						<td><%= f.select :event_startmonth, [*1..12] , include_blank: "" %>月</td>
-						<td><%= f.select :event_startday, [*1..31] , include_blank: "" %>日</td>
-						<td>〜</td>
-						<td><%= f.select :event_finishmonth, [*1..12] , include_blank: "" %>月</td>
-						<td><%= f.select :event_finishday, [*1..31] , include_blank: "" %>日</td>
+						<td>
+							<%= f.select :event_startmonth, [*1..12] , include_blank: "" %>月
+							<%= f.select :event_startday, [*1..31] , include_blank: "" %>日
+							〜
+							<%= f.select :event_finishmonth, [*1..12] , include_blank: "" %>月	
+							<%= f.select :event_finishday, [*1..31] , include_blank: "" %>日	
+						</td>
 					</tr>
 					<tr>
 						<td><%= f.hidden_field :longitude %>
@@ -89,7 +93,11 @@
 			</table>
 	</div>
 
-	<div class="row">
+	<div class="row margin-top30" align="center">
+    	<h3>マップ</h3>
+    </div>
+
+	<div class="row" align="center">
 		<div id='map'></div>
 
 		<style>
@@ -154,7 +162,7 @@
 			</script>
 	</div>
 	<div class="row">
-		<div class="col-xs-offset-3 col-xs-6">
+		<div class="col-xs-offset-3 col-xs-6 margin-top10">
 		<%= f.submit '編集を保存', class: "btn btn-primary btn-lg btn-block", style: "color: white;", data: {turbolinks: false} %>
 		</div>
 	</div>

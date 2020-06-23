@@ -1,7 +1,7 @@
 <div class="container margin-top60">
 
   <div class="row" align="center">
-  	<h3><strong>有名スポットマップ</strong></h3>
+  	<h3><strong>穴場スポットマップ</strong></h3>
 
   	<div id='map'>
   	
@@ -39,7 +39,7 @@
 			  //       	content: '<div class="map"><%= link_to place.placename, admin_place_path(place) %></div>' // 吹き出しに表示する内容
 					// });
 
-					var msg = '<div class="map"><%= link_to place.placename, admin_place_path(place) %><br>					<%= attachment_image_tag place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "200x150" %></div>'
+					var msg = '<div class="map"><%= link_to place.placename, user_place_path(place) %><br>					<%= attachment_image_tag place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "200x150" %></div>'
 	        attachMessage(marker, msg)
 			marker.addListener('click', function() { // マーカーをクリックしたとき
 				infoWindow.open(map, marker); // mapみmakerをの吹き出しの表示します

@@ -8,54 +8,69 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <header class="navbar navbar-expand navbar-dark fixed-top"><!-- 上部に固定 -->
-      <div class="container-fluid"><!-- バーの横幅を流動的に変動 -->
-          <h1 class="logofront">伊豆</h1><h1 class="logoback"><strong>ホタル</strong></h1>
+    <div class="wrapper">
+      
+      <header class="navbar navbar-expand navbar-dark fixed-top"><!-- 上部に固定 -->
+        <div class="container-fluid"><!-- バーの横幅を流動的に変動 -->
+          <div style="float: left;">
+            <h1 class="logofront"><%= link_to "伊豆", root_path %></h1>
+            <h1 class="logoback"><strong><%= link_to "ホタル", root_path %></strong></h1>
+          </div>
+          <div style="float: right; margin-right: 100px; padding-top: 28px;">
             <% if user_signed_in? %>
-                  <div class="youkoso">
-                    ようこそ、<strong><%= link_to current_user.name, user_user_path(current_user) %></strong> さん！
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                  </div>
-                
-              <% elsif admin_signed_in? %>
-                    <div class="youkoso">
-                      こんにちは、<strong>管理者</strong> さん！
-                      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-                    </div>
-              
-              <% else %>
-                    <div class="youkoso">
-                      <%= link_to "ログイン", new_user_session_path %>
-                    </div>
+              <span class="youkoso">
+                ようこそ、<strong><%= link_to current_user.name , user_user_path(current_user) %></strong> さん！
+                <%= link_to "ログアウト", destroy_user_session_path, class: "nav-menu", method: :delete %>
+              </span>
+            <% elsif admin_signed_in? %>
+              <span class="youkoso">
+                こんにちは、<strong>管理者</strong> さん！
+                <%= link_to "ログアウト", destroy_admin_session_path, class: "nav-menu", method: :delete %>
+              </span>
 
+            <% else %>
+              <span class="youkoso">
+                <%= link_to "ログイン", new_user_session_path, class: "nav-menu" %>
+              </span>
             <% end %>
-      </div>
+          </div>
+          <div id="sp-menu" style="float: right;">
+            <ul class="margin-top100">
+              <li><%= link_to "ABOUT", homes_about_path %></li>
+              <!-- <li><a href="#">エリアから探す</a></li> -->
+              <li><%= link_to "マップから探す（有名スポット）", admin_places_map_path %></li>
+              <li><%= link_to "マップから探す（穴場スポット）", user_places_map_path %></li>
+              <!-- <li><a href="#">見頃時期から探す</a></li> -->
+              <li><%= link_to "穴場を投稿する", new_user_place_path %></li>
+              <li><%= link_to "穴場をみる", user_places_path %></li>
+              <li><%= link_to "注意事項", homes_attention_path %></li>
+            </ul>
+          </div>
 
-      <div id="sp-menu">
-      <ul class="margin-top100">
-        <li><%= link_to "ABOUT", homes_about_path %></li>
-        <li><a href="#">エリアから探す</a></li>
-        <li><%= link_to "マップから探す", admin_places_map_path %></li>
-        <li><a href="#">見頃時期から探す</a></li>
-        <li><%= link_to "穴場を投稿する", new_user_place_path %></li>
-        <li><%= link_to "穴場をみる", user_places_path %></li>
-        <li><a href="#">注意事項</a></li>
-      </ul>
-    </div>
+          <div id="hm-icon">
+            <a class="menu-trigger" href="#">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+        </div>
 
-    <div id="hm-icon">
-      <a class="menu-trigger" href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-      </a>
-    </div>
 
-    </header>
+
+      </header>
           
-    <%= yield %>
+      <%= yield %>
+
+      <footer>
+        <span>©IZU-HOTARU, All Right Reserved.</span>
+      </footer>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </div>
   </body>
 </html>

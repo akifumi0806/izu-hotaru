@@ -1,4 +1,4 @@
-<div class="container margin-top60 backgroundcolor">
+<div class="container margin-top60 ">
   <div class="row" align="center">
   	<h3><strong>穴場スポット一覧</strong></h3>
     <div class="col-xs-2 col-xs-offset-10">
@@ -6,17 +6,17 @@
     </div>
   </div>
 
-  <div class="row main">
+  <div class="row main backgroundcolor">
   		<% @places.each do |place| %>
         <% if place.user_id.present? %>
           <%= link_to user_place_path(place) do %>
-      		  <div class="col-xs-3">
+      		  <div class="col-xs-3 padding-bottom30">
       			<table>
       				<tr>
-      					<td><%= place.placename %></td>
+      					<td><h4><%= place.placename %></h4></td>
       				</tr>
       				<tr>
-    					   <td><p><i class="fa fa-user "></i><%= place.user.name %></p><%= attachment_image_tag place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "200x150" %>
+    					   <td><p><i class="fa fa-user "></i><%= place.user.name %></p><%= attachment_image_tag place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "250x200" %>
                  </td>
       				</tr>
               <tr>
@@ -37,5 +37,6 @@
           <% end %>
         <% end %>
   		<% end %>
+  </div>
 
 </div>

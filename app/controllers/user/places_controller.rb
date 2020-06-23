@@ -40,6 +40,10 @@ class User::PlacesController < ApplicationController
 	    redirect_to user_places_path
   	end
 
+  	def map
+    	@places = Place.where(user_id: true)
+  	end
+
 	private
 	def place_params
   		params.require(:place).permit(:image, :placename, :explanation, :area, :type, :address, :longitude, :latitude)

@@ -42,6 +42,10 @@ class Admin::PlacesController < ApplicationController
     @places = Place.where(admin_id: true)
   end
 
+  def searcharea
+    @places = Place.where(admin_id: true)
+  end
+
   private
   	def place_params
   		params.require(:place).permit(:image, :placename, :explanation, :area, :type, :admiration_startmonth, :admiration_startseason, :admiration_finishmonth, :admiration_finishseason, :address, :tel, :officialsite, :parking, :access_car, :access_public, :event, :event_startmonth, :event_startday, :event_finishmonth, :event_finishday, :longitude, :latitude)

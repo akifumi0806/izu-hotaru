@@ -7,47 +7,52 @@
 
 	<div class="row">
 		<div class="info-menu">
-			<span class="info-logo">登録情報</span>
-			<%= link_to 'アカウントを編集する',edit_user_registration_path, class: "btn btn-primary", style: "color: white;"  %>
-			<%= link_to "パスワードを変更する", edit_user_password_path, class: "btn btn-primary" , style: "color: white;" %>
+			
+			<%= link_to 'アカウントを編集する', edit_user_registration_path, class: "btn btn-primary", style: "color: white;"  %>
+			<%#= link_to "パスワードを変更する", edit_user_password_path, class: "btn btn-primary" , style: "color: white;" %>
 			<%= link_to "退会する", user_user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" , style: "color: white;" %>
 		</div>
 	</div>
 	
 	<div class="row">
-		<table class="info-table">
-			<tr>
-				<td>ユーザー名</td>
-				<td><%= @user.name %></td>
-			</tr>
-			<tr>
-				<td>メールアドレス</td>
-				<td><%= @user.email %></td>
-			</tr>
-		</table>
+		<div class="col-xs-3 margin-top30">
+			<table class="table table-bordered ">
+				登録情報
+				<tr>
+					<td>ユーザー名</td>
+					<td><%= @user.name %></td>
+				</tr>
+				<tr>
+					<td>メールアドレス</td>
+					<td><%= @user.email %></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<div class="row">
-		<span class="info-logo">穴場スポット投稿一覧</span>
-			<table class="info-table">
-				<% @place.each do |place| %>
-					<tr>
-						<td>スポット名</td>
-						<td><%= link_to place.placename, user_place_path(place) %></td>
-						<td><i class="fa fa-comment"></i><%= place.comments.count %>
-            
-                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= place.favorites.count %></td>
-						<td>
-							<% if (place.favorites.count) >= ((place.coupons.count+1)*2) %>
-                  				<%= link_to "クーポン発行", user_place_coupons_path(place), method: :post %>
-                  			<% end %>
-                  		</td>
-                
-					</tr>
+		<div class="col-xs-5 margin-top30">
+			<span class="info-logo">穴場スポット投稿一覧</span>
+				<table class="table table-bordered">
+					<% @place.each do |place| %>
+						<tr>
+							<td><%= link_to place.placename, user_place_path(place) %></td>
+							<td><i class="fa fa-comment"></i><%= place.comments.count %>
+	            				<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+				                <%= place.favorites.count %></td>
+							<td>
+								<% if (place.favorites.count) >= ((place.coupons.count+1)*1) %>
+	                  				<%= link_to "クーポン発行", user_place_coupons_path(place), method: :post, class: "btn btn-success" %>
+	                  			<% end %>
+	                  		</td>
+	                
+						</tr>
 
-				<% end %> 
-			</table>
-
+					<% end %> 
+				</table>
+			<span>※"クーポン発行"ボタンはレジ店員が押させていただきました画面表示<br>
+				　のみ有効となります。<br>
+				　一度ボタンを押すと表示されませんのでご注意ください。
+		</div>
 		
 	</div>
 
