@@ -3,7 +3,9 @@
   <div class="row" align="center">
   	<h3><strong>有名スポット一覧</strong></h3>
     <div class="col-xs-2 col-xs-offset-10">
-      <a href="/admin/places/new" class="btn-circle-3d">＋</a>
+      <% if admin_signed_in? %>
+        <a href="/admin/places/new" class="btn-circle-3d">＋</a>
+      <% end %>
     </div>
   </div>
 

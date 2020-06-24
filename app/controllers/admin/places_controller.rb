@@ -1,5 +1,5 @@
 class Admin::PlacesController < ApplicationController
-
+  before_action :redirect_root, except: :index
   def index
   	@places = Place.where(admin_id: true)
   end
@@ -50,5 +50,9 @@ class Admin::PlacesController < ApplicationController
   	def place_params
   		params.require(:place).permit(:image, :placename, :explanation, :area, :type, :admiration_startmonth, :admiration_startseason, :admiration_finishmonth, :admiration_finishseason, :address, :tel, :officialsite, :parking, :access_car, :access_public, :event, :event_startmonth, :event_startday, :event_finishmonth, :event_finishday, :longitude, :latitude)
   	end
+
+    def redirect_root
+      redirect_to root_path unless admin_signed_in?
+    end
   
 end
