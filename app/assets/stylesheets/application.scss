@@ -85,6 +85,24 @@ h1.logoback{
   float: left;
 }
 
+.about1{
+  
+  background: image-url('photo-1589446819574-0c68dfd8b11b.jpeg');
+  background-size: cover;
+}
+
+.about2{
+  margin-top: 7%;
+}
+
+.lineheight{
+  line-height: 40px;
+}
+
+.contentheight{
+  line-height: 35px;
+}
+
 .navbar{
 	backgraound-color: gray;
 }
@@ -241,6 +259,14 @@ p.comment{
 .percent{
   color:#99FF00;
   font-size: 50px;
+}
+
+.moveup img {
+  display: block;
+  transition: 0.5s;
+}
+.moveup img:hover {
+  transform: scale(1.1, 1.1);
 }
 
 /*ハンバーガーメニュー*/

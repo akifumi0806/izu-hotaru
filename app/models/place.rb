@@ -7,7 +7,8 @@ class Place < ApplicationRecord
     end
   has_many :comments, dependent: :destroy
   has_many :coupons, dependent: :destroy
-	attachment :image
+
+  attachment :image
 	# enum area: {三島沼津: 0, 中伊豆: 1, 西伊豆: 2, 東伊豆: 3, 南伊豆: 4}
 
 	# 存在性のバリデーション
