@@ -11,7 +11,7 @@
 				<tbody>
 					<tr>
 						<td>写真</td>
-						<td class="white"><%= f.attachment_field :image %></td>
+						<td class="white"><%= f.attachment_field :image, style:"color:white;" %></td>
 						<td><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "no_image.jpg", size: "100x50" %></td>
 					</tr>
 					<tr>
