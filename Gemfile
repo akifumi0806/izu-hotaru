@@ -84,3 +84,5 @@ end
  gem 'chunky_png'
 
  gem 'carrierwave', '~> 1.0.0'
+
+gem "refile-s3"
