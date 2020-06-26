@@ -1,5 +1,5 @@
 class Admin::PlacesController < ApplicationController
-  before_action :redirect_root, except: [:index, :show]
+  before_action :redirect_root, except: [:index, :show, :map]
   def index
   	@places = Place.where(admin_id: true)
   end
