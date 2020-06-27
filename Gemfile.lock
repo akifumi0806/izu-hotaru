@@ -72,6 +72,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     barby (0.6.8)
     bcrypt (3.1.13)
+    bcrypt_pbkdf (1.0.1)
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
@@ -135,6 +136,7 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    ed25519 (1.2.4)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.12.2)
@@ -303,6 +305,7 @@ PLATFORMS
 
 DEPENDENCIES
   barby
+  bcrypt_pbkdf
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.3.6)
   byebug
@@ -317,6 +320,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  ed25519
   geocoder
   jbuilder (~> 2.5)
   jquery-rails
