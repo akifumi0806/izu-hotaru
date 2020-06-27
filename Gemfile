@@ -86,3 +86,5 @@ end
  gem 'carrierwave', '~> 1.0.0'
 
 gem "refile-s3"
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
