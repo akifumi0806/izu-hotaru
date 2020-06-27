@@ -61,7 +61,6 @@ server '13.115.13.32', user: 'ec2-user', roles: %w{app web db}
 #   }
 set :stage, :production
 set :rails_env, 'production'
-server 'sub.example.com', user: 'ec2-user', roles: %w{web app db}
 set :ssh_options, {
   keys: [File.expand_path('~/.ssh/test.pem')],
 }
