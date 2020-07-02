@@ -2,12 +2,12 @@
   <div class="row margin-top30" align="center">
     <h3 class="letterspace"><strong><i><%= @place.placename %></i></strong></h3><br>
   </div>
-  <div class="row backgroundcolor1">
+  <div class="row backgroundcolor1 showpic">
     <div class="col-xs-6 padding-left50">
       <p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "450x300" %></p>
     </div>
 
-    <div class="col-xs-5" style="margin-left: 30px;">
+    <div class="col-xs-5 showexplanation" style="margin-left: 30px;">
       <h4 class="contentheight"><%= @place.explanation %></h4><br>
 
       <table>
@@ -65,14 +65,16 @@
       </table>
   </div>
 
-  <div class="row" align="center">
-    <h3>マップ</h3>
-    <div id='map'></div>
+  <div class="row blockcenter" align="center">
+    <div class="col-xs-12">
+      <h3>マップ</h3>
+      <div id='map'></div>
+    </div>
 
     <style>
       #map {
           height: 400px;
-          width: 1000px;
+          width: 100%;
       }
     </style>
 

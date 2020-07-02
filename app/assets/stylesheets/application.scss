@@ -277,6 +277,17 @@ p.comment{
   font-size: 17px;
 }
 
+/*レスポンシブ対応*/
+
+.blockcenter{
+  margin: 0 auto;
+}
+
+.showexplanation{
+  flex-wrap: wrap;
+  display: flex;
+}
+
 /*ハンバーガーメニュー*/
 #hm-icon{
   position: fixed;
