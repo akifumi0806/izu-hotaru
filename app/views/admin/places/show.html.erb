@@ -4,10 +4,10 @@
   </div>
   <div class="row backgroundcolor1 showpic">
     <div class="col-xs-6 padding-left50">
-      <p><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "450x300" %></p>
+      <p class="showpic"><%= attachment_image_tag @place, :image, format: 'jpeg', fallback: "noImage1x1.jpg", size: "450x300" %></p>
     </div>
 
-    <div class="col-xs-5 showexplanation" style="margin-left: 30px;">
+    <div class="col-xs-5" style="margin-left: 30px;">
       <h4 class="contentheight"><%= @place.explanation %></h4><br>
 
       <table>

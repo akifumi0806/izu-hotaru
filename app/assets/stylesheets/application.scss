@@ -142,7 +142,7 @@ table td {
   background-color: rgba(220,220,220, 0.15);
   color: white;
   padding: 50px 0;
-  height: 400px;
+  /*height: 400px;*/
   margin-bottom: 50px;
 }
 
@@ -283,9 +283,8 @@ p.comment{
   margin: 0 auto;
 }
 
-.showexplanation{
-  flex-wrap: wrap;
-  display: flex;
+.showpic>.attachment.place.image{
+  width: 100%;
 }
 
 /*ハンバーガーメニュー*/
