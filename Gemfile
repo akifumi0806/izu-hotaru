@@ -83,7 +83,7 @@ end
  gem 'barby'
  gem 'chunky_png'
 
- gem 'carrierwave', '~> 1.0.0'
+ gem 'carrierwave', '~> 1.3.2'
 
 gem "refile-s3"
 gem 'ed25519'
